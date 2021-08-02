@@ -11,9 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@+k&45@dgd2ld6b(g=#@+2nijwj1m)&xfnpln95v*7z5895wxc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['todo-api-of-zain.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['todo-api-of-zain.herokuapp.com']
 
 
 # Application definition
@@ -65,11 +65,32 @@ WSGI_APPLICATION = 'notes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'dbbkpuvqdf10pc',
+
+        'USER': 'ugxkcbgphzrkaa',
+
+        'PASSWORD': '8313aa167ae7cf3dce39548474c0519f6f53ec4f272e5a56607f71bd16f832af',
+
+        'HOST': 'ec2-52-45-179-101.compute-1.amazonaws.com',
+
+        'PORT': '5432',
+
     }
+
 }
 
 
@@ -109,14 +130,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+import django_heroku
 CORS_ALLOW_ALL_ORIGINS = True
 STATIC_ROOT = BASE_DIR/'staticfiles'
-DISABLE_COLLECTSTATIC = True
+STATIC_URL = '/static/'
+django_heroku.settings(locals())
+# DISABLE_COLLECTSTATIC = True

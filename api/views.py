@@ -2,7 +2,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import NoteSerializer
 from .models import Note
-from api import serializers
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -14,7 +13,7 @@ def getRoutes(request):
             'description': 'Return array of notes'
         },
         {
-            'Endpoint': '/notes/id',
+            'Endpoint': '/notes/note/id',
             'method': 'GET',
             'body': None,
             'description': 'Returns a single note object'
@@ -26,7 +25,7 @@ def getRoutes(request):
             'description': 'create a note'
         },
         {
-            'Endpoint': '/notes/id/update',
+            'Endpoint': '/notes/note/id/update',
             'method': 'PUT',
             'body': {
                 'body': ''
@@ -34,7 +33,7 @@ def getRoutes(request):
             'description': 'update a note'
         },
         {
-            'Endpoint': '/notes/id/delete',
+            'Endpoint': '/notes/note/id/delete',
             'method': 'DELETE',
             'body': None,
             'description': 'deletes an existing note'
